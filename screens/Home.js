@@ -3,7 +3,7 @@ import { Alert, FlatList, ImageBackground, LogBox, Platform, ScrollView, StatusB
 import Icon from "react-native-vector-icons/AntDesign"
 import { COLORS, SIZES, images } from "./../constants"
 import { Order } from "../screens"
-import { movies } from "../data/Movies"
+import { movies$ } from "../data/Movies"
 
 
 
@@ -15,23 +15,31 @@ const Home = ({ route, navigation }) => {
 
   ////////////////////////////////////////////////////////////////////////////////////
   // States
+  const [movies, setMovies] = React.useState([])
   const [cart, setCart] = React.useState([])
   ////////////////////////////////////////////////////////////////////////////////////
-  
+
 
   ////////////////////////////////////////////////////////////////////////////////////
   // Hooks
   useEffect(() => {
-    LogBox.ignoreAllLogs();//Ignore all log notifications
+    LogBox.ignoreAllLogs();
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (route.params) {
       setCart([])
     }
   }, [route.params]);
+
+
+  useEffect(() => {
+    movies$.then(function (result) {
+      setMovies(result)
+    })
+  }, []);
   ////////////////////////////////////////////////////////////////////////////////////
-  
+
 
 
 
@@ -55,6 +63,7 @@ const Home = ({ route, navigation }) => {
             <Text style={{ fontSize: SIZES.h1, fontWeight: "bold", color: COLORS.white, marginBottom: 6 }} >{item.title}</Text>
             <Text style={{ fontSize: SIZES.h4, fontWeight: "bold", color: COLORS.secondary, marginBottom: 6 }} >{item.category} ({item.duration})</Text>
             <View style={{ marginTop: 27, height: 40, width: 120 }}>
+
               {cart.includes(item) ? (
                 <Pressable onPress={() => setCart(cart.filter((x) => x.id !== item.id))}
                   style={{
@@ -69,7 +78,7 @@ const Home = ({ route, navigation }) => {
                       height: 40, width: 120, backgroundColor: COLORS.primary, alignItems: "center", justifyContent: "center",
                       borderRadius: 5
                     }}>
-                    <Text style={{ fontSize: SIZES.h4, fontWeight: "bold", color: COLORS.white }} >Reserver</Text>
+                    <Text style={{ fontSize: SIZES.h4, fontWeight: "bold", color: COLORS.white }} >Réserver</Text>
                   </Pressable>
                 )}
             </View>
@@ -88,7 +97,7 @@ const Home = ({ route, navigation }) => {
     )
   }
   ////////////////////////////////////////////////////////////////////////////////////
-  
+
 
 
 
@@ -140,7 +149,7 @@ export default Home;
 
 
 ////////////////////////////////////////////////////////////////////////////////////
-  // Style
+// Style
 const styles = StyleSheet.create({
   container: {
     flex: 1,

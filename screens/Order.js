@@ -106,7 +106,7 @@ const Order = ({ route, navigation }) => {
         {renderMoviesList()}
 
 
-        <Text style={{ fontSize: SIZES.h1 + 5, fontWeight: "bold", color: COLORS.white, marginTop: 20, marginBottom: 10 }}>Information</Text>
+        <Text style={{ fontSize: SIZES.h1 + 5, fontWeight: "bold", color: COLORS.white, marginTop: 20, marginBottom: 10 }}>Informations</Text>
 
         <View style={styles.searchBar}>
           <TextInput
@@ -122,7 +122,7 @@ const Order = ({ route, navigation }) => {
             placeholder="adresse email*                  "
             style={{ fontSize: SIZES.h3, fontWeight: "normal", color: COLORS.white }} />
         </View>
-        {error ? <Text style={{ fontSize: SIZES.h6, fontWeight: "normal", color: COLORS.primary, marginTop: 3 }}>Completez vos informations</Text> : null}
+        {error ? <Text style={{ fontSize: SIZES.h6, fontWeight: "normal", color: COLORS.primary, marginTop: 3 }}>Complétez vos informations</Text> : null}
 
 
 

@@ -28,7 +28,7 @@ const User = () => {
     password: "",
   })
   ////////////////////////////////////////////////////////////////////////////////////
-  
+
 
 
 
@@ -42,16 +42,19 @@ const User = () => {
   }
 
 
-  const connexion = () => { el.length > 0 & el == profile.email & pword.length > 0 & pword == profile.password ?
-     setLogin(true) : setError2(true) 
+  const connexion = () => {
+    el.length > 0 & el == profile.email & pword.length > 0 & pword == profile.password ?
+      setLogin(true) : setError2(true)
   }
 
-  const deconnexion = () => { { setLogin(false), setAccount(true), setName(""), setError2(false), 
-     setPassword(""), setEmail(""), setPword(""), setEl("") 
-     } 
+  const deconnexion = () => {
+    {
+      setLogin(false), setAccount(true), setName(""), setError2(false),
+        setPassword(""), setEmail(""), setPword(""), setEl("")
+    }
   }
   ////////////////////////////////////////////////////////////////////////////////////
-  
+
 
 
   ////////////////////////////////////////////////////////////////////////////////////
@@ -142,7 +145,7 @@ const User = () => {
       </View> :
         <View>
           <View style={{
-            height: Platform.OS === "ios" ? SIZES.headios + 190 : SIZES.head,
+            height: Platform.OS === "ios" ? SIZES.headios + 100 : SIZES.head,
             backgroundColor: COLORS.darkgray,
             justifyContent: "center",
             alignItems: "center",
@@ -159,13 +162,12 @@ const User = () => {
                   source={images.avatar}
                   resizeMode="contain"
                   style={{
-                    width: 90,
-                    height: 90,
+                    width: 67,
+                    height: 67,
                     marginTop: 39
                   }}
                 />
-                <Text style={{ fontSize: SIZES.h1 + 10, fontWeight: "bold", color: COLORS.white, marginTop: 20, marginBottom: 10 }}>{profile.name}</Text>
-                <Text style={{ fontSize: SIZES.h3, fontWeight: "normal", color: COLORS.secondary, marginTop: 10, marginBottom: 10 }}>Quel film allez-vous voir aujourd'hui ?</Text>
+                <Text style={{ fontSize: SIZES.h1 + 5, fontWeight: "bold", color: COLORS.white, marginTop: 20, marginBottom: 10 }}>{profile.name}</Text>
 
               </View>
             </ImageBackground>
@@ -176,26 +178,30 @@ const User = () => {
             marginTop: 30,
             paddingHorizontal: SIZES.padding2 + 8,
           }}>
-            <Text style={{ fontSize: SIZES.h1, fontWeight: "bold", color: COLORS.white, marginTop: 0, marginBottom: 10 }}>Information</Text>
+            <Text style={{ fontSize: SIZES.h1, fontWeight: "bold", color: COLORS.white, marginTop: 0, marginBottom: 17 }}>Informations</Text>
 
 
+            <Text style={{ fontSize: SIZES.h6, fontWeight: "bold", color: COLORS.white, marginBottom: 5, marginTop: 3 }}>Nom & prenom</Text>
             <View style={styles.searchBar}>
               <Text style={{ fontSize: SIZES.h3, fontWeight: "bold", color: COLORS.secondary }}>{profile.name}</Text>
             </View>
+
+            <Text style={{ fontSize: SIZES.h6, fontWeight: "bold", color: COLORS.white, marginBottom: 5, marginTop: 3 }}>Adresse email</Text>
             <View style={styles.searchBar}>
               <Text style={{ fontSize: SIZES.h3, fontWeight: "bold", color: COLORS.secondary }}>{profile.email}</Text>
             </View>
+
+            <Text style={{ fontSize: SIZES.h6, fontWeight: "bold", color: COLORS.white, marginBottom: 5, marginTop: 3 }}>Mot de passe</Text>
             <View style={styles.searchBar}>
               <Text style={{ fontSize: SIZES.h3, fontWeight: "bold", color: COLORS.secondary }}>{profile.password}</Text>
             </View>
 
+            <Text style={{ fontSize: SIZES.h1, fontWeight: "bold", color: COLORS.white, marginTop: 30, marginBottom: 10 }}>Réservation</Text>
+            <Text style={{ fontSize: SIZES.h4, fontWeight: "normal", textAlign: "center", color: COLORS.secondary, marginTop: 10, marginBottom: 40 }}>Aucune réservation pour l'instant.</Text>
+
             <Pressable style={styles.searchBar2} onPress={deconnexion}>
               <Text style={{ fontSize: SIZES.h3, fontWeight: "bold", color: COLORS.white }}>Déconnexion</Text>
             </Pressable>
-
-            <Text style={{ fontSize: SIZES.h1, fontWeight: "bold", color: COLORS.white, marginTop: 40, marginBottom: 10 }}>Réservation</Text>
-            <Text style={{ fontSize: SIZES.h4, fontWeight: "normal", textAlign: "center", color: COLORS.secondary, marginTop: 10, marginBottom: 10 }}>Aucune réservation pour l'instant.</Text>
-
 
           </View>
 
@@ -213,7 +219,7 @@ export default User;
 
 
 ////////////////////////////////////////////////////////////////////////////////////
-  // Style
+// Style
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -236,7 +242,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderColor: COLORS.secondary,
     borderWidth: 0.5,
-    marginTop: 10,
+    marginBottom: 10,
   },
   searchBar2: {
     height: SIZES.bar,
